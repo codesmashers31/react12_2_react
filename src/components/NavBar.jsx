@@ -18,6 +18,9 @@ const NavBar = () => {
           <Link className="linklist" to="/service">
             Service
           </Link>
+          <Link className="linklist" to="/state">
+            State
+          </Link>
         </div>
       </div>
     </>

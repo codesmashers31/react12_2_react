@@ -8,6 +8,7 @@ import Services from './components/Services'
 
 // In your App.js or main layout component
 import Footer from './components/Footer'
+import StateProcess from './components/StateProcess'
 
 const App = ()=> {
   return (
@@ -20,6 +21,7 @@ const App = ()=> {
       <Route path='/about' element={<Crew/>}   />
       <Route path='/product' element={<Tickets/>}   />
        <Route path='/service' element={<Services/>}   />
+        <Route path='/state' element={<StateProcess/>}   />
 
     </Routes>
       </main>
