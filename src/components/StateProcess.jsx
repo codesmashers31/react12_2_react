@@ -1,35 +1,45 @@
-import React, { useState } from 'react'
+import { useState } from "react"
+
+
 
 const StateProcess = () => {
- const [count,setCount] = useState(0)
+
+  const [color,setColor] = useState(true)
+
+
+  const changecolor =()=>{
+
+    setColor(!color)
+    
+  }
+
+
+  const style = {
+       
+    backgroundColor:color?"yellow":"black",
+    color:color?"black":"white"
+
+  }
   
-  const updatethenumber = () => { 
-     
-    setCount(count+1)
-
-    if(count==10){
-      setCount(0)
-    }
-
-   }
-
-
   return (
-    <div className='bg-blue-600 h-100 flex justify-center items-center'>
-         <div className='bg-white text-black p-10 rounded text-center'>
-            <h1>
-                This is Count
-            </h1>
+    <>
+<div className="flex gap-8 flex-col p-10 justify-center items-center">
+    {color?<div className="bg-black text-white rounded-full flex justify-center items-center w-50 h-50 p-10">
+          <p className="text-2xl">Off</p>
+        </div>: <div className="bg-yellow-300 text-black rounded-full flex justify-center items-center w-50 h-50 p-10">
+          <p className="text-2xl">On</p>
+        </div>}
+       
+        
 
-            <h2 className='text-2xl'>
-                   {count}
-            </h2>
-            <button className='bg-black w-30 p-1 rounded mt-1 border-0 text-white' onClick={updatethenumber}>Click Me</button>
-         </div>
-    </div>
+       
+        <div className="flex">
+        <button style={style} className="p-1 w-50 rounded mx-2" onClick={changecolor}>{color?"ON":"Off"}</button>
+        
+        </div>
+        </div> 
+    </>
   )
 }
 
 export default StateProcess
-
-
