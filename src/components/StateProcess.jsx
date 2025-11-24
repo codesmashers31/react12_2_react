@@ -1,45 +1,70 @@
-import { useState } from "react"
+import { useEffect, useState } from "react";
 
 
 
 const StateProcess = () => {
+   console.log('Component Running....');
+    const [heading,setHeading] = useState([])
+    const [datas,setDatas] =useState("Tghis is function")
 
-  const [color,setColor] = useState(true)
+  // const clickme = ()=>{
+  //  console.log('Function  Running....');
+  //  setHeading("Function Active this Data")
+  // }
+     
 
 
-  const changecolor =()=>{
+  // 9clickme()
 
-    setColor(!color)
-    
+
+  // console.log(a);
+   //console.log(heading);
+   
+
+   const fetch_new = ()=>{
+    setDatas('this is object')
+   }
+
+
+
+    const fetchdatas = ()=>{
+        
+     fetch('https://dummyjson.com/products')
+  .then(response => response.json())
+  .then(data => setHeading(data.products))
+  .catch(error => console.error(error));
+
   }
 
+  useEffect(()=>{
+    console.log('my Effect is ruuning');
+ fetchdatas()
+  },[datas])
 
-  const style = {
-       
-    backgroundColor:color?"yellow":"black",
-    color:color?"black":"white"
 
-  }
-  
+
   return (
     <>
-<div className="flex gap-8 flex-col p-10 justify-center items-center">
-    {color?<div className="bg-black text-white rounded-full flex justify-center items-center w-50 h-50 p-10">
-          <p className="text-2xl">Off</p>
-        </div>: <div className="bg-yellow-300 text-black rounded-full flex justify-center items-center w-50 h-50 p-10">
-          <p className="text-2xl">On</p>
-        </div>}
-       
-        
+    <h1 className='text-4xl'>
+     {heading.map((e,i)=>(
+       <p key={i}>
+           {e.id }
+           {e.title}
+       </p>
 
-       
-        <div className="flex">
-        <button style={style} className="p-1 w-50 rounded mx-2" onClick={changecolor}>{color?"ON":"Off"}</button>
-        
-        </div>
-        </div> 
+     ))}
+    </h1>
+  <h2>
+ {datas}
+  </h2>
+   
+    <button onClick={fetch_new}>click Now</button>
     </>
   )
+
+  
 }
 
 export default StateProcess
+
+
