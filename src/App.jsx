@@ -9,12 +9,13 @@ import Services from './components/Services'
 // In your App.js or main layout component
 import Footer from './components/Footer'
 import StateProcess from './components/StateProcess'
+import Props from './components/Props'
 
 const App = ()=> {
   return (
    <>
     <div className="App">
-      <NavBar />
+      {/* <NavBar /> */}
       <main>
         <Routes>
       <Route path='/' element={<HomePage/>}   />
@@ -22,10 +23,11 @@ const App = ()=> {
       <Route path='/product' element={<Tickets/>}   />
        <Route path='/service' element={<Services/>}   />
         <Route path='/state' element={<StateProcess/>}   />
+        <Route path='/props' element={<Props/>}   />
 
     </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
    </>
   )

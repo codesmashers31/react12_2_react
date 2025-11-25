@@ -1,70 +1,53 @@
-import { useEffect, useState } from "react";
-
-
+import React, { useEffect, useState } from 'react'
+import Tickets from './Tickets'
 
 const StateProcess = () => {
-   console.log('Component Running....');
-    const [heading,setHeading] = useState([])
-    const [datas,setDatas] =useState("Tghis is function")
 
-  // const clickme = ()=>{
-  //  console.log('Function  Running....');
-  //  setHeading("Function Active this Data")
-  // }
-     
+  const [newdatas,setNewDatas] = useState([])
 
+const fetchDatas = async()=>{
 
-  // 9clickme()
+   const datastake = await fetch("https://dummyjson.com/products")
+   const res = await datastake.json()
+   const datas = await res.products
 
-
-  // console.log(a);
-   //console.log(heading);
+   setNewDatas(datas)
+   
    
 
-   const fetch_new = ()=>{
-    setDatas('this is object')
-   }
+  //console.log('datas',datas);
+   
 
 
+} 
 
-    const fetchdatas = ()=>{
-        
-     fetch('https://dummyjson.com/products')
-  .then(response => response.json())
-  .then(data => setHeading(data.products))
-  .catch(error => console.error(error));
+useEffect(()=>{
 
-  }
+  fetchDatas()
 
-  useEffect(()=>{
-    console.log('my Effect is ruuning');
- fetchdatas()
-  },[datas])
+},[])
 
 
 
   return (
+
     <>
-    <h1 className='text-4xl'>
-     {heading.map((e,i)=>(
-       <p key={i}>
-           {e.id }
-           {e.title}
-       </p>
+    {
+       newdatas.map((e)=>(
+           <div key={e.id}>
+             <h1>{e.id} ) {e.title}</h1>
+           </div>
+       ))
+    }
+    
 
-     ))}
-    </h1>
-  <h2>
- {datas}
-  </h2>
-   
-    <button onClick={fetch_new}>click Now</button>
+
+    <Tickets/>
     </>
-  )
+    
 
-  
+    
+  )
 }
 
 export default StateProcess
-
-
