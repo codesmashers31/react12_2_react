@@ -10,6 +10,9 @@ import Services from './components/Services'
 import Footer from './components/Footer'
 import StateProcess from './components/StateProcess'
 import Props from './components/Props'
+import FormHandling from './components/FormHandling'
+import CollectionForm from './components/CollectionForm'
+import ShowDatas from './components/ShowDatas'
 
 const App = ()=> {
   return (
@@ -23,7 +26,10 @@ const App = ()=> {
       <Route path='/product' element={<Tickets/>}   />
        <Route path='/service' element={<Services/>}   />
         <Route path='/state' element={<StateProcess/>}   />
-        <Route path='/props' element={<Props/>}   />
+        <Route path='/form' element={<FormHandling/>}   />
+         <Route path='/collectionform' element={<CollectionForm/>}   />
+         <Route path='/showdatas' element={<ShowDatas/>}   />
+      
 
     </Routes>
       </main>
